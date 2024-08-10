@@ -1,7 +1,9 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from "cors";
-
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const models = require("./models/models")
+const router = require("./routes/index");
+const errorHandler = require("./middleware/ErrorHadlingMiddleware");
 
 const app = express();
 
@@ -11,11 +13,11 @@ app.use(
     origin: '*',
   }),
 );
+app.use("/api", router)
 
-dotenv.config();
+app.use(errorHandler)
 
-const PORT = Number(process.env.PORT);
-
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);

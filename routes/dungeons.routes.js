@@ -1,7 +1,11 @@
-import { Router } from 'express';
+const Router = require("express");
+const dungeonsController = require("../controllers/dungeons.controller");
+
+const router = new Router();
+
+router.post("/", dungeonsController.postDungeons)
+router.get("/", dungeonsController.getDungeons)
+router.get("/:id", dungeonsController.getOneDungeons)
 
 
-export const router = Router();
-
-
-
+module.exports = router;
