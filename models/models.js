@@ -196,8 +196,8 @@ const data = [
   // })
 
 
-// data.forEach((item, index) => {
-//   sequelize.sync({force: false}).then(()=>{
-//     Dungeons.create({...data[index]})
-//   })
-// })
+data.forEach((item, index) => {
+  sequelize.sync({force: false}).then(()=>{
+    Dungeons.create({...data[index]})
+  })
+})
